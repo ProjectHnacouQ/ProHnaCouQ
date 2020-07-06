@@ -19,7 +19,7 @@ class CategoryController extends Controller
      public function cate_del($id){
      	Category::find($id)->delete();
 
-     	return redirect()->back();
+     	return redirect()->back()->with('success','Xóa Thành Công!!!');
      }
      public function add(){
      	return view('admin.category.add');
@@ -28,7 +28,7 @@ class CategoryController extends Controller
 
      public function post_add(Request $request){
      	category::create($request->all());
-     	return redirect()->route('cat-index');
+     	return redirect()->route('cat-index')->with('success','thêm mới Thành Công!!!!');
 
      }
       public function update($id){

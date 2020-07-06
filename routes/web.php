@@ -25,4 +25,5 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'],function(){
 	Route::get('index','adminController@index');
 
 	include 'Category.php';
+	include 'user.php';
 });

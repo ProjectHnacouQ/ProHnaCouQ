@@ -1,6 +1,6 @@
 @extends('admin.master.admin')
 
-@section('title','Category')
+@section('title','User')
 @section('content')
 	<form action="" method="POST" class="form-inline" role="form">
 	
@@ -8,22 +8,27 @@
 			<label class="sr-only" for="">label</label>
 			<input type="email" class="form-control" id="" placeholder="Input field">
 		</div>
+	
+		
+	
 		<button type="submit" class="btn btn-primary">Search</button>
-		<span><a href="{{ route('cate_add')}}" class="btn btn-primary  ">ADD</a></span>
+		<span><a href="{{ route('user_add')}}" class="btn btn-primary  ">ADD</a></span>
 	</form>
-
-	<table class="table table-hover ">
-		@if(Session::has('success'))
+	@if(Session::has('success'))
 		<div class="alert alert-success">
 		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 		{{Session::get('success')}}
-		@endif
+	</div>
+	@endif
+
+	<table class="table table-hover ">
 		<thead>
 			<tr>
-				<th>id</th>
-				<th>name</th>
-				<th>status</th>
-				<th>created_at</th>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th>password</th>
+				
 				<th>Tùy Chọn</th>
 			</tr>
 		</thead>
@@ -32,12 +37,12 @@
 			<tr>
 				<td>{{$cat->id}}</td>
 				<td>{{$cat->name}}</td>
-				<td>{{$cat->status}}</td>
-				<td>{{$cat->created_at}}</td>
-			
+				<td>{{$cat->email}}</td>			
+				<td>{{$cat->password}}</td>			
+							
 				<td>
-					<a href="{{ route('cate_del',['id' => $cat->id])}}" class="btn btn-danger  " onclick="return confirm('bạn có chắc không?')">Delete</a>
-					<a href="{{ route('cate_update',['id' => $cat->id])}}" class="btn btn-success ">Update</a>
+					<a href="{{ route('user_delete',['id' => $cat->id])}}" class="btn btn-danger  " onclick="return confirm('bạn có chắc không?')">Delete</a>
+					<a href="{{ route('user_update',['id' => $cat->id])}}" class="btn btn-success ">Update</a>
 					
 				</td>
 			</tr>
