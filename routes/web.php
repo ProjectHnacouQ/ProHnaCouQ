@@ -20,10 +20,15 @@ Route::get('/', function () {
 /*
 
 */
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin'],function(){
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin','middleware'=>'auth'],function(){
 	Route::get('admin','adminController@admin')->name('admin');
-	Route::get('index','adminController@index');
+	
+	Route::get('/','adminController@index')->name('index');
 
 	include 'Category.php';
 	include 'user.php';
 });
+
+Route::get('admin/login','Admin\adminController@login')->name('login');
+Route::post('admin/login','Admin\adminController@post_login')->name('login');
+Route::get('/','Admin\adminController@logout')->name('logout');
